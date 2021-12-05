@@ -88,11 +88,11 @@ function checkInput(enabling) {
 			submit.disabled = !K||searching;
 			errorText.innerText = "";
 		}
-		var ss1 = a[3] ? "image/" + b.charAt(0) + ".png" : "";
-		var ss2 = a[3] ? "image/" + b.charAt(1) + ".png" : "";
-		var ss3 = a[3] ? "image/" + b.charAt(2) + ".png" : "";
-		var ss4 = a[3] ? "image/" + b.charAt(3) + ".png" : "";
-		var ss5 = a[2] ? "image/" + b + ".png" : I ? "image/x.png" : "";
+		var ss1 = a[2] ? "image/" + b + ".png" : a[3] ? "image/" + b.charAt(0) + ".png" : "";
+		var ss2 =                                a[3] ? "image/" + b.charAt(1) + ".png" : "";
+		var ss3 =                                a[3] ? "image/" + b.charAt(2) + ".png" : "";
+		var ss4 =                                a[3] ? "image/" + b.charAt(3) + ".png" : "";
+		var ss5 = I ? "image/x.png" : "";
 		if (ss1) { s1.classList.remove("h"); } else { s1.classList.add("h"); }
 		if (ss2) { s2.classList.remove("h"); } else { s2.classList.add("h"); }
 		if (ss3) { s3.classList.remove("h"); } else { s3.classList.add("h"); }
