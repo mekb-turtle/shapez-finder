@@ -1,0 +1,106 @@
+html, body {
+	margin: 0;
+	background: #121216;
+	color: #eef5ff;
+	font-family: "Ubuntu", "Segoe UI", "Tahoma", sans-serif;
+}
+.red {
+	color: #ff5555;
+}
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+	marign: 0;
+	padding-bottom: 0;
+	background: #161b1f;
+	font-size: 12px;
+	border-radius: 2px;
+}
+#s1, #s2, #s3, #s4 {
+	position: relative;
+	width: 64px;
+	height: 64px;
+	top: 0;
+	left: 0;
+}
+#s2 { left: -64px;  transform: rotate(90deg);  }
+#s3 { left: -128px; transform: rotate(180deg); }
+#s4 { left: -192px; transform: rotate(270deg); }
+a {
+	color: #5555ff;
+	text-decoration: none;
+	cursor: pointer;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	margin-bottom: 8px;
+}
+body {
+	margin: 48px;
+}
+.input {
+	background: #121216;
+	color: #eef5ff;
+	border: 1px solid #666777;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.c::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+#shape {
+	margin-top: 5px;
+}
+img {
+	margin-top: 5px;
+	border: none;
+}
+.hh {
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+}
+.h {
+	display: none;
+}
+.f {
+	pointer-events: none;
+}
+.yr, .y {
+	margin-right: 5px;
+}
+.yb, .y {
+	margin-bottom: 5px;
+}
+.yyr {
+	padding-right: 5px;
+}
+.yyb {
+	padding-bottom: 5px;
+}
+.z {
+	padding-right: 8px;
+	padding-left: 8px;
+}
+.j {
+	margin: 0px !important;
+	margin-top: -4px !important;
+	margin-bottom: -4px !important;
+}
+.x, .xy {
+	cursor: pointer;
+}
+.xy:disabled {
+	cursor: initial;
+}
+.input:disabled, .xx {
+	color: #eef5ff !important;
+	opacity: 0.5;
+}
+.input::placeholder {
+	color: #666777;
+	text-align: center;
+	opacity: 1;
+}

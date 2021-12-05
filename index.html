@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>shapez.io shape patch finder</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/styles.css">
+	<script src="lz.js"></script>
+	<script src="rng.js"></script>
+	<script src="save.js"></script>
+	<script src="shapez.js"></script>
+</head>
+<body>
+	<h2>shapez.io shape patch finder</h2>
+	<noscript><p>Please enable Javascript and reload the page</p></noscript>
+	<div class="c h" id="main">
+		<form action="#" id="form">
+			<input type="text" id="find" value="" placeholder="Shape/Color" class="z y input"/><br/>
+			<input type="text" id="seed" value="" placeholder="Map Seed" class="z y input"/><br/>
+			<label for="file" class="y x" id="fileLabel"><input type="button" id="fakeFile" class="input z f" value="Upload"/><input class="h x" name="file" id="file" type="file"/></label><input type="submit" value="Search" id="submit" disabled="" class="z y input b xy"/><br/>
+		</form>
+		<div class="h j" id="shape">
+			<img src="" id="s1" width="64" height="64"/><img src="" id="s2" width="64" height="64"/><img src="" id="s3" width="64" height="64"/><img src="" id="s4" width="64" height="64"/><img src="" id="s5" width="64" height="64"/>
+		</div>
+	</div>
+	<p class="red" id="errortext"></p>
+	<table class="h" id="table"></table>
+	<p id="help" class="h">
+		Type red, green, or blue to search for that color.<br/>
+		Type a shape code such as RRWW or RuRuWuWu to search for that shape.<br/>
+		Then upload your save data or manually type your game's map seed,
+		and press search to search for it.<br/>
+		To get your save data launch shapez.io, click on your save file, and click the 
+		&quot;download&quot; icon to export it.<br/>
+		You can also find it in <code>~/.local/share/shapez.io/saves</code> (Linux) or 
+		<code>%APPDATA%\shapez.io\saves</code> (Windows)<br/>
+		Hint: You can press F4 twice to see the coordinates in the bottom right.<br/>
+		No data is sent to servers, the script is done locally.<br/>
+		<a href="https://github.com/mekb-turtle/shapez.io-finder/issues" target="_blank">Report bugs here</a>.<br/>
+	</p>
+	<script src="index.js"></script>
+	<img src="/image/red.png" width="0" height="0" style="hh"/><img src="/image/green.png" width="0" height="0" style="hh"/><img src="/image/blue.png" width="0" height="0" style="hh"/><img src="/image/R.png" width="0" height="0" style="hh"/><img src="/image/C.png" width="0" height="0" style="hh"/><img src="/image/W.png" width="0" height="0" style="hh"/><img src="/image/S.png" width="0" height="0" style="hh"/>
+</body>
+</html>
+
