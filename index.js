@@ -60,11 +60,11 @@ function checkInput(enabling) {
 						checkInput();
 					} catch (e) {
 						console.error("error getting seed from shapez file -",e);
-						errorText.innerText = "Error reading file, file is not valid shapez.io save file, or seed not found in file";
 						resultTable.classList.add("h");
 						if (find.disabled) return;
 						seed.disabled = false;
 						checkInput();
+						errorText.innerText = "Error reading file, file is not valid shapez.io save file, or seed not found in file";
 					}
 				};
 				fileReader.readAsBinaryString(fileForm.files[0]);
