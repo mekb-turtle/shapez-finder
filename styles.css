@@ -16,7 +16,7 @@ code {
 	font-size: 12px;
 	border-radius: 2px;
 }
-#s1, #s2, #s3, #s4 {
+#s1, #s2, #s3, #s4, #s5 {
 	position: relative;
 	width: 64px;
 	height: 64px;
@@ -26,6 +26,7 @@ code {
 #s2 { left: -64px;  transform: rotate(90deg);  }
 #s3 { left: -128px; transform: rotate(180deg); }
 #s4 { left: -192px; transform: rotate(270deg); }
+#s5 { left: -256px; }
 a {
 	color: #5555ff;
 	text-decoration: none;
