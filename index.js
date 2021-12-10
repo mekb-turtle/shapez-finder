@@ -118,7 +118,11 @@ function checkInput(enabling) {
 		s3.classList.add("h");
 		s4.classList.add("h");
 		s5.classList.add("h");
-		helpText.classList.remove("h");
+		if (TF||TS) {
+			helpText.classList.add("h");
+		} else {
+			helpText.classList.remove("h");
+		}
 		errorText.innerText = "";
 		resultTable.classList.add("h");
 		return false;
