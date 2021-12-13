@@ -23,9 +23,9 @@ code {
 	top: 0;
 	left: 0;
 }
-#s2 { left: -64px;  transform: rotate(90deg);  }
-#s3 { left: -128px; transform: rotate(180deg); }
-#s4 { left: -192px; transform: rotate(270deg); }
+#s2 { left: -64px;  }
+#s3 { left: -128px; }
+#s4 { left: -192px; }
 #s5 { left: -256px; }
 a {
 	color: #5555ff;
