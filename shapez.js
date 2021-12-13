@@ -98,20 +98,19 @@ const returnRes = (arg, seed, findMax) => {
 		var shapeMatch = arg.match(/^(([CRWS]){4}|([CRWS]u){4})$/i);
 		if (posMatch || colorMatch || shapeMatch) {
 			if (typeof seed != "string" || !seed) return { error: true };
-			if (findMax == null) findMax = 20;
+			if (findMax == null) findMax = 50;
 			if (typeof findMax != "number" || findMax < 0 || findMax != Math.round(findMax)) return { error: true };
 		} else {
 			return { error: true };
 		}
 		delete _;
-		const search = (c) => {
+		const search = (c, pLength) => {
 			if (!c) return [];
 			var x = 0;
 			var y = 0;
 			var dx = 0;
 			var dy = -1;
 			var patches = [];
-			var pLength = 20;
 			const doSearch = () => {
 				if (pLength <= 0) {
 					return true;
