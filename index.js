@@ -14,13 +14,21 @@ var s4 = document.getElementById("s4");
 var s5 = document.getElementById("s5");
 var fakeFile = document.getElementById("fakeFile");
 var helpText = document.getElementById("help");
+var titleText = document.getElementById("title");
+var limitText = document.getElementById("limit");
 var searching = false;
 document.getElementById("main").classList.remove("h");
 document.getElementById("help").classList.remove("h");
 function isValidSeed(s) {
 	return !!s.match(/^([0-9]|[1-9][0-9]{1,4}|100000)$/);
 }
-function checkInput(enabling) {
+function resetDisplays() {
+	limitText.innerText = "";
+	titleText.innerText = "";
+	resultTable.innerHTML = "";
+	errorText.innerText = "";
+}
+function checkInput(enabling, dontReset) {
 	var a;
 	var K = !!seed.value && typeof seed.value == "string";
 	if (K) K = isValidSeed(seed.value);
@@ -60,7 +68,6 @@ function checkInput(enabling) {
 						checkInput();
 					} catch (e) {
 						console.error("error getting seed from shapez file -",e);
-						resultTable.classList.add("h");
 						if (find.disabled) return;
 						seed.disabled = false;
 						checkInput();
@@ -77,16 +84,17 @@ function checkInput(enabling) {
 		if (a[3] && b.length == 8) b = b.charAt(0) + b.charAt(2) + b.charAt(4) + b.charAt(6);
 		if (a[2]) b = b.toLowerCase();
 		if (a[3]) b = b.toUpperCase();
+		if (title.innerText != b) {
+			if (!dontReset) resetDisplays();
+		}
 		shapeO.classList.remove("h");
 		var I = false;
 		if (+(b.charAt(0)=="W")+(b.charAt(1)=="W")+(b.charAt(2)=="W")+(b.charAt(3)=="W")>1&&b!="RRWW") {
 			errorText.innerText = b + " cannot appear in game, however RRWW can";
-			resultTable.classList.add("h");
 			submit.disabled = true;
 			I = true;
 		} else {
 			submit.disabled = !K||searching;
-			errorText.innerText = "";
 		}
 		var ss1 = a[2] ? "image/" + b + ".png" : a[3] ? "image/" + b.charAt(0) + "1.png" : "";
 		var ss2 =                                a[3] ? "image/" + b.charAt(1) + "2.png" : "";
@@ -104,8 +112,11 @@ function checkInput(enabling) {
 		s4.src = ss4;
 		s5.src = ss5;
 		helpText.classList.add("h");
-		return (K&&!I&&!searching)?{find:TF,seed:TS}:false;
+		return (K&&!I&&!searching)?{find:b,seed:TS}:false;
 	} else {
+		if (title.innerText != b) {
+			if (!dontReset) resetDisplays();
+		}
 		submit.disabled = true;
 		shapeO.classList.add("h");
 		s1.src = "";
@@ -123,8 +134,6 @@ function checkInput(enabling) {
 		} else {
 			helpText.classList.remove("h");
 		}
-		errorText.innerText = "";
-		resultTable.classList.add("h");
 		return false;
 	}
 }
@@ -141,19 +150,23 @@ checkInput();
 form.addEventListener("submit", function(ev) {
 	ev.preventDefault();
 	var a = checkInput(true);
+	var y = false;
+	var z = false;
 	if (a) {
+		resetDisplays();
+		errorText.innerText = "";
+		title.innerText = a.find;
+		limitText.classList.add("h");
+		limitText.innerText = "";
+		const findMax = 50;
 		searching = true;
-		const result = returnRes(a.find, a.seed);
-		console.log(result);
+		const result = findPatches(a.find, a.seed, findMax);
 		resultTable.innerHTML = "";
 		if (result.found) {
 			resultTable.classList.remove("h");
 			let h = document.createElement("tr");
 			let h1 = document.createElement("th");
 			let h2 = document.createElement("th");
-			h1.classList.add("yyr");
-			h2.classList.add("yyr");
-			h.classList.add("yyb");
 			let hh1 = document.createTextNode("X");
 			let hh2 = document.createTextNode("Y");
 			h1.appendChild(hh1);
@@ -165,9 +178,6 @@ form.addEventListener("submit", function(ev) {
 				let h = document.createElement("tr");
 				let h1 = document.createElement("td");
 				let h2 = document.createElement("td");
-				h1.classList.add("yyr");
-				h2.classList.add("yyr");
-				h.classList.add("yyb");
 				let hh1 = document.createTextNode(result.results[i].ax);
 				let hh2 = document.createTextNode(result.results[i].ay);
 				h1.appendChild(hh1);
@@ -176,11 +186,21 @@ form.addEventListener("submit", function(ev) {
 				h.appendChild(h2);
 				resultTable.appendChild(h);
 			}
+			if (result.results.length >= findMax) {
+				y = true;
+			}
 		} else {
+			z = true;
+		}
+		searching = false;
+		checkInput(false, true);
+		if (y) {
+			limitText.classList.remove("h");
+			limitText.innerText = "50 maximum reached";
+		}
+		if (z) {
 			resultTable.classList.add("h");
 			errorText.innerText = "No results found";
 		}
-		searching = false;
-		checkInput();
 	}
 });

@@ -53,8 +53,8 @@ body {
 }
 td, th {
 	text-align: center;
-	padding-left: 12px;
-	padding-right: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
@@ -64,6 +64,9 @@ td, th {
 img {
 	margin-top: 5px;
 	border: none;
+}
+.yy {
+	padding-top: 12px;
 }
 .hh {
 	opacity: 0;
@@ -81,12 +84,6 @@ img {
 }
 .yb, .y {
 	margin-bottom: 5px;
-}
-.yyr {
-	padding-right: 5px;
-}
-.yyb {
-	padding-bottom: 5px;
 }
 .z {
 	padding-right: 8px;

@@ -89,7 +89,7 @@ var getPatchAt = (x, y, mapSeed) => {
 	}
 	return res.reduce((a,b)=>({...a,...b}),{});
 }
-const returnRes = (arg, seed, findMax) => {
+const findPatches = (arg, seed, findMax) => {
 	try {
 		if (typeof arg != "string" || !arg) return { error: true };
 		// i don't really see any need to use position as you can just launch the game and see what patch is there
@@ -98,8 +98,7 @@ const returnRes = (arg, seed, findMax) => {
 		var shapeMatch = arg.match(/^(([CRWS]){4}|([CRWS]u){4})$/i);
 		if (posMatch || colorMatch || shapeMatch) {
 			if (typeof seed != "string" || !seed) return { error: true };
-			if (findMax == null) findMax = 50;
-			if (typeof findMax != "number" || findMax < 0 || findMax != Math.round(findMax)) return { error: true };
+			if (typeof findMax != "number" || !findMax || findMax <= 0 || findMax >= 100000 || findMax != Math.round(findMax)) return { error: true };
 		} else {
 			return { error: true };
 		}
@@ -121,7 +120,7 @@ const returnRes = (arg, seed, findMax) => {
 					patches.push({ ax: x*16+8, ay: y*16+8, x, y, ...patch });
 				}
 			}
-			for (var i = 0; i < 2000000; ++i) {
+			for (var i = 0; i < 200000000; ++i) {
 				x += dx;
 				y += dy;
 				if (x == y || (-1-y == x)) {
