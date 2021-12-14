@@ -92,7 +92,7 @@ var getPatchAt = (x, y, mapSeed) => {
 const findPatches = (arg, seed, findMax) => {
 	try {
 		if (typeof arg != "string" || !arg) return { error: true };
-		// i don't really see any need to use position as you can just launch the game and see what patch is there
+		// no need to get only one patch at specific location as you can just launch the game and see what patch is there
 		var posMatch = arg.match(/^(-[1-9]|-?[1-9][0-9]{1,9}|[0-9]),(-[1-9]|-?[1-9][0-9]{1,9}|[0-9])$/);
 		var colorMatch = arg.match(/^(green|red|blue)$/i);
 		var shapeMatch = arg.match(/^(([CRWS]){4}|([CRWS]u){4})$/i);
