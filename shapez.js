@@ -129,7 +129,7 @@ const findPatches = (arg, seed, findMax) => {
 					else if (dx ==  0 && dy ==  1) { dx =  1; dy =  0; }
 					else if (dx ==  1 && dy ==  0) { dx =  0; dy = -1; }
 				}
-				if (doSearch() == true) {
+				if (doSearch()) {
 					return patches;
 				}
 				if (x >= 0 && x == y) { ++x; doSearch(); }
@@ -146,7 +146,7 @@ const findPatches = (arg, seed, findMax) => {
 		} else if (shapeMatch) {
 			var c = shapeMatch[1].toUpperCase();
 			if (c.length == 8) c = c.match(/../g).map(e => e[0]);
-			if (c.split("").filter(e => e == "W").length / c.length >= 0.25 && c != "RRWW") {
+			if (c.split("").filter(e => e == "W").length / c.length > 0.25 && c != "RRWW") {
 				return { found: false };
 			}
 			var s = search(c, findMax);
