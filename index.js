@@ -71,7 +71,7 @@ function checkInput(enabling, dontReset) {
 						if (find.disabled) return;
 						seed.disabled = false;
 						checkInput();
-						errorText.innerText = "Error reading file, file is not valid shapez.io save file, or seed not found in file";
+						errorText.innerText = "Error reading file, file is not valid shapez save file, or seed not found in file";
 					}
 				};
 				fileReader.readAsBinaryString(fileForm.files[0]);
