@@ -102,7 +102,6 @@ const findPatches = (arg, seed, findMax) => {
 		} else {
 			return { error: true };
 		}
-		delete _;
 		const search = (c, pLength) => {
 			if (!c) return [];
 			var x = 0;
